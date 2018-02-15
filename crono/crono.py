@@ -135,9 +135,13 @@ class Crono:
         event = self._add_event(name, breakpoint=True)
 
     def show(self):
-        print('Crono' + '='*61 + ' exec_time = dry_time = n° exec_sum = dry_sum')
-        for event in self.events:
-            print(event)
+        print(self.format())
+
+    def format(self):
+        return '\n'.join(
+                         ['Crono' + '='*61 + ' exec_time = dry_time = n° exec_sum = dry_sum', ] +
+                         [str(event) for event in self.events]
+                )
 
 
 from time import sleep
@@ -165,10 +169,10 @@ class A:
         sleep(0.1)
 
 
-#a = A()
+a = A()
 
 
-#a._a()
-#a._d()
-#a._c()
-#crono.show()
+a._a()
+a._d()
+a._c()
+crono.show()
